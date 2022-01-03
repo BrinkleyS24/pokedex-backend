@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('./partials/head.ejs') %>
+    </head>
+<body>
+    <header>
+        <h1>Pokedex Entry- <%= data.name %> </h1>
+        <div>
+            <h3><%= data.name %> </h3>
+            <img src="<%= data.img %> " alt="<%= data.name %> ">
+            <p>Id: <%= data.id %> </p>
+        </div>
+        <div>
+            Type: <ul>
+                <% data.type.forEach(element => { %>
+                    <li><%= element %></li>
+             <%   }); %> 
+            </ul> 
+        </div>
+        <div>
+            Stats: <% for (const stat in data.stats) { %>
+                <li><%= `${stat}: ${data.stats[stat]}` %> </li>
+          <%  } %> 
+        </div>
+    </header>
+</body>
+</html>

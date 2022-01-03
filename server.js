@@ -3,13 +3,15 @@ const app = express();
 const Pokemon = require('./models/pokemon.js');
 const port = 3000;
 
+
+app.get('/', (req, res) => res.redirect('/pokemon'));
 // INDEX
-app.get('/', (req, res) => {
+app.get('/pokemon', (req, res) => {
 res.render('index.ejs', { data: Pokemon });
 });
 
 // NEW
-app.get ('/pokemon/:id', (req, res) => {
+app.get('/pokemon/new', (req, res) => {
 res.render('new.ejs')
 })
 // DESTROY
@@ -25,15 +27,15 @@ app.post('/pokemon', (req, res) => {
 
 })
 // EDIT
-app.get ('/pokemon/:id/edit', (req, res) => {
+app.get('/pokemon/:id/edit', (req, res) => {
     res.render('edit.ejs')
 })
 // SHOW
-app.get('/:id', (req, res) => {
+app.get('/pokemon/:id', (req, res) => {
 res.render('show.ejs', { data: Pokemon[req.params.id] });
 });
 
 // LISTEN 
 app.listen(port,() => {
     console.log('listening on port' , port);
-});
+});        
