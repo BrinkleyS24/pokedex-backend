@@ -8,13 +8,13 @@ const methodOverride = require('method-override')
 
 //mount middleware
 app.use(morgan('dev'));
-app.use(express.urlencoded({ extended: false })); // body parser-reads data from form submission, create req.body
+app.use(express.urlencoded({ extended: false })); 
 app.use(function (req, res, next) {
     console.log('I run for all routes')
     next();
 });
-app.use(express.static('public'));
-app.use(methodOverride('_method'))
+app.use('/public', express.static('public'));
+app.use(methodOverride('_method'));
 app.use(express.json());
 
 app.get('/', (req, res) => res.redirect('/pokemon'));

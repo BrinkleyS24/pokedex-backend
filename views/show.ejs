@@ -1,32 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <%- include('./partials/head.ejs') %>
-    </head>
-<body>
-    <%- include('./partials/header.ejs') %> 
-        <div>
-            <h2><%= data.name %> </h2>
-            <img src="<%= data.img %> " alt="<%= data.name %> ">
-            <p>Id: <%= data.id %> </p>
-        </div>
-        <div>
-            Type: <ul>
-                <% data.type.forEach(element => { %>
-                    <li><%= element %> </li>
-             <%  }); %> 
-            </ul> 
-        </div>
-        <div>
-            Stats:
-            <ul>
-                <li>hp: <%= data.stats.hp %></li>
-                <li>attack: <%= data.stats.attack %> </li>
-                <li>defense: <%= data.stats.attack %> </li>
-                <li>spattack: <%= data.stats.spattack %> </li>
-                <li>spdefense: <%= data.stats.spdefense %> </li>
-                <li>speed: <%= data.stats.speed %> </li>
-            </ul>
+
+<head>
+    <%- include('./partials/head.ejs') %>
+</head>
+
+<body style="background-color: rgb(61, 125, 202);">
+    <%- include('./partials/header.ejs') %>
+        <div class="container">
+            <div class="card show">
+                <h2 style='color: rgb(61, 125, 202);'>
+                    <%= data.name %>
+                </h2>
+                <img src="<%= data.img %> " class="card-image" alt="<%= data.name %> ">
+                <p>Id: <%= data.id %>
+                </p>
+                Type: <ul>
+                    <% data.type.forEach(element=> { %>
+                        <li>
+                            <%= element %>
+                        </li>
+                        <% }); %>
+                </ul>
+
+                <div class="card-footer">
+                    Stats:
+                    <ul>
+                        <li>hp: <%= data.stats.hp %>
+                        </li>
+                        <li>attack: <%= data.stats.attack %>
+                        </li>
+                        <li>defense: <%= data.stats.attack %>
+                        </li>
+                        <li>spattack: <%= data.stats.spattack %>
+                        </li>
+                        <li>spdefense: <%= data.stats.spdefense %>
+                        </li>
+                        <li>speed: <%= data.stats.speed %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 </body>
+
 </html>

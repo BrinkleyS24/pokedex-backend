@@ -3,7 +3,7 @@
     <head>
         <%- include('./partials/head.ejs') %>
     </head>
-<body>
+<body style="background-color: rgb(61, 125, 202); color: rgb(255, 203, 5)">
     <%- include('./partials/header.ejs') %> 
     <h2>Edit Pokemon</h2>
     <form action="/pokemon/<%= id %>?_method=PUT " method="POST">
@@ -18,7 +18,7 @@
         spattack: <input type="text" name="spattack" value="<%= data.stats.spattack %>" /> <br>
         spdefense: <input type="text" name="spdefense" value="<%= data.stats.spdefense %>" /> <br>
         speed: <input type="text" name="speed" value="<%= data.stats.speed %>" /> <br>
-        <input type="submit" value="Update Pokemon" /> <br>
+        <input class="submit" type="submit" value="Update Pokemon" /> <br>
     </form>
 </body>
 </html>
