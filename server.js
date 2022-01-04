@@ -15,12 +15,13 @@ app.use(function (req, res, next) {
 });
 app.use(express.static('public'));
 app.use(methodOverride('_method'))
+app.use(express.json());
 
 app.get('/', (req, res) => res.redirect('/pokemon'));
+
 // INDEX
 app.get('/pokemon', (req, res) => {
     res.render('index.ejs', { data: Pokemon });
-    console.log(Pokemon[1])
 });
 
 // NEW
@@ -34,8 +35,33 @@ app.delete('/pokemon/:id', (req, res) => {
 })
 // UPDATE
 app.put('/pokemon/:id', (req, res) => {
-    Pokemon[req.params.id] = req.body;
-    res.redirect('/')
+    Pokemon[req.params.id] = {
+        name: req.body.name,
+        img: req.body.img,
+        type: [req.body.type],
+        stats: {
+            hp: req.body.hp,
+            attack: req.body.attack,
+            defense: req.body.defense,
+            spattack: req.body.spattack,
+            spdefense: req.body.spdefense,
+            speed: req.body.speed
+        }
+    };
+    console.log({
+        name: req.body.name,
+        img: req.body.img,
+        type: [req.body.type],
+        stats: {
+            hp: req.body.hp,
+            attack: req.body.attack,
+            defense: req.body.defense,
+            spattack: req.body.spattack,
+            spdefense: req.body.spdefense,
+            speed: req.body.speed
+        }
+    });
+    res.redirect('/pokemon/')
 })
 // CREATE 
 app.post('/pokemon', (req, res) => {
@@ -56,7 +82,10 @@ app.post('/pokemon', (req, res) => {
 })
 // EDIT
 app.get('/pokemon/:id/edit', (req, res) => {
-    res.render('edit.ejs')
+    res.render('edit.ejs', {
+        data: Pokemon[req.params.id],
+        id: req.params.id
+    })
 })
 // SHOW
 app.get('/pokemon/:id', (req, res) => {

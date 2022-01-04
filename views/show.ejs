@@ -6,21 +6,27 @@
 <body>
     <%- include('./partials/header.ejs') %> 
         <div>
-            <h3><%= data.name %> </h3>
+            <h2><%= data.name %> </h2>
             <img src="<%= data.img %> " alt="<%= data.name %> ">
             <p>Id: <%= data.id %> </p>
         </div>
         <div>
             Type: <ul>
                 <% data.type.forEach(element => { %>
-                    <li><%= element %></li>
-             <%   }); %> 
+                    <li><%= element %> </li>
+             <%  }); %> 
             </ul> 
         </div>
         <div>
-            Stats: <% for (const stat in data.stats) { %>
-                <li><%= `${stat}: ${data.stats[stat]}` %> </li>
-          <%  } %> 
+            Stats:
+            <ul>
+                <li>hp: <%= data.stats.hp %></li>
+                <li>attack: <%= data.stats.attack %> </li>
+                <li>defense: <%= data.stats.attack %> </li>
+                <li>spattack: <%= data.stats.spattack %> </li>
+                <li>spdefense: <%= data.stats.spdefense %> </li>
+                <li>speed: <%= data.stats.speed %> </li>
+            </ul>
         </div>
 </body>
 </html>
