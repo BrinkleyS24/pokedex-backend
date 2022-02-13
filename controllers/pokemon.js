@@ -1,7 +1,18 @@
 const express = require('express');
 const pokemonRouter = express.Router();
 const Pokemon = require('../models/poke')
+const pokemonSeed = require('../models/pokeSeed')
 
+// Seed
+pokemonRouter.get('/seed', (req, res) => {
+    // to remove any repeat instances of seed data
+    Pokemon.deleteMany({}, (error, allPoke) => { });
+
+    Pokemon.create(pokemonSeed, (error, data) => {
+        res.redirect('/pokemon');
+    }
+    );
+});
 
 // INDEX
 pokemonRouter.get('/', async (req, res) => {
